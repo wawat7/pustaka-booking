@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
