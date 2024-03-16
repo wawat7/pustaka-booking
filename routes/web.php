@@ -19,6 +19,8 @@ Route::get('/', function() {
     return redirect('/home');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Auth::routes();
+
+Route::middleware(['goto_page_admin'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
