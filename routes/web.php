@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::group(['prefix' => 'auth', 'as' => 'auth.'], function() {
-    Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('/', function() {
+    return redirect('/home');
 });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Auth::routes();
